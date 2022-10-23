@@ -1,10 +1,8 @@
-from time import sleep
 import discord
 from dotenv import load_dotenv
 import os
 import requests
 import json
-
 load_dotenv()
 
 def get_quote():
@@ -37,14 +35,17 @@ async def on_message(message):
 
     if message.content.startswith('!inspire'):
         await message.channel.send(get_quote())
-
+       
     if message.content.startswith('!oi'):
         await message.channel.send('Olá, seja bem-vindo ' + message.author.name)
 
+    if message.content.startswith('!game'):
+        await message.channel.send('Eae bucetudo, vamos jogar ?')
+ 
+       
     if message.content.startswith("!cep"):
         vCep = message.content
         quote = getCep(vCep[5:])
         await message.channel.send(quote)
-
 
 client.run(os.getenv('TOKEN2'))
